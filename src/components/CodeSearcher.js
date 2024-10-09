@@ -13,6 +13,7 @@ const CodeSearcher = () => {
 
   const handleSelectionChange = (event) => {
     setSelectedCategory(event.target.value);
+    setSearchInput("");
   };
 
   const normalizeString = (str) => {
@@ -46,26 +47,27 @@ const CodeSearcher = () => {
   }, [searchInput, selectedCategory]);
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="recherchez un produit (min 3 caractères)"
-        value={searchInput}
-        onChange={(event) => setSearchInput(event.target.value)}
-      />
+    <div className="CodeSearcher">
+      <div>
+        <input
+          type="text"
+          placeholder="recherchez un produit (min 3 caractères)"
+          value={searchInput}
+          onChange={(event) => setSearchInput(event.target.value)}
+        />
 
-      <select
-        id="select"
-        value={selectedCategory}
-        onChange={handleSelectionChange}
-      >
-        {categoryOptions.map((category, index) => (
-          <option key={index} value={category}>
-            {category}
-          </option>
-        ))}
-      </select>
-
+        <select
+          id="select"
+          value={selectedCategory}
+          onChange={handleSelectionChange}
+        >
+          {categoryOptions.map((category, index) => (
+            <option key={index} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+      </div>
       <div>
         {productsList.length === 0 &&
         searchInput.length < 3 &&

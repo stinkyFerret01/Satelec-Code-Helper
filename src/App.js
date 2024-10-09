@@ -5,7 +5,7 @@ import CodeSearcher from "./components/CodeSearcher";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Header></Header>
       <CodeSearcher></CodeSearcher>
     </div>

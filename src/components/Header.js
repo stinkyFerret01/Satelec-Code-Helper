@@ -1,7 +1,9 @@
+import headerImage from "../media/satelec_bleu.png";
+
 const Header = () => {
   return (
-    <div>
-      <h1>Satelec Code Helper</h1>
+    <div className="Header">
+      <img src={headerImage} className="HeaderImage" alt="Header" />
     </div>
   );
 };
