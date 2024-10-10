@@ -1,6 +1,8 @@
 @import "styles/reset.css";
 @import "styles/header.css";
-@import "styles/codeSearcher.css";
+@import "styles/code-searcher.css";
+@import "styles/search-filters.css";
+@import "styles/products-displayer";
 
 .App {
     height: 100vh;

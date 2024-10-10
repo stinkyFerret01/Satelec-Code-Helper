@@ -1,7 +1,8 @@
 .Header {
-    height: 40px;
+    height: 50px;
     width: 100vw;
     padding: 5px;
+    box-sizing: border-box;
     background-color: #0055A0;
 }
 

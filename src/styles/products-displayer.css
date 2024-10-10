@@ -1,0 +1,17 @@
+.products-displayer {
+    width: 100vw;
+    max-width: 100vw;
+    height: calc(100vh - 100px);
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.filter-rules {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+}
+
+.product-displayer {
+    /* background-color: green; */
+}
