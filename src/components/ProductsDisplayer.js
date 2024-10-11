@@ -3,7 +3,7 @@ import ProductDisplayer from "./ProductDisplayer";
 
 const ProductsDisplayer = ({ productsList }) => {
   useEffect(() => {
-    // console.log("PD");
+    // console.log("ProductsDisplayer");
   }, [productsList]);
 
   return (

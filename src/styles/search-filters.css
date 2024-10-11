@@ -1,19 +1,20 @@
 .search-filters {
     box-sizing: border-box;
-    padding: 8px 0px 8px 0px;
+    padding: 8px 4px 8px 4px;
     height: 48px;
     width: 100vw;
 
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
 }
 
-.filter-inputs {
-    display: flex;
-    justify-content: center;
+/* .filter-inputs {
     width: 100vw;
-}
-
+    
+    display: flex;
+    justify-content: space-around;
+} */
+/* .input-filter */
 .input-filter .MuiOutlinedInput-root {
     max-height: 38px;
     width: 108px;
@@ -24,18 +25,22 @@
 .input-filter  .MuiInputLabel-shrink {
     margin-top: -0px;
 }
-.input-filter  .MuiInputLabel-focused {
-    color: blue;
-}
 
 .select-filter {
     min-width: 194px;
+    max-width: 194px;
     max-height: 32px;
+    /* margin-right: 4px; */
+    margin: 0px 4px 0px 4px;
 }
+/* .select-filter:hover {
+   cursor: pointer;
+} */
 
 .reset-filters {
     border: solid #B3B3B3 1px;
     border-radius: 4px;
+
     height: 38px;
     width: 38px;
 }

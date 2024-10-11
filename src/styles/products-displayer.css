@@ -10,11 +10,12 @@
 }
 
 .filter-rules {
-    display: flex;
+    width: 100%;
     margin-top: 1rem;
+
+    display: flex;
     justify-content: center;
     text-align: center;
-    width: 100vw;
 }
 
 .product-displayer {
@@ -22,14 +23,14 @@
 }
 
 .product-detail {
-    background-color: white;
+    background-color: rgba(255, 216, 0, 1);
     border: solid black 2px;
+    border-radius: 8px;
 
-    padding: 4px 8px 4px 8px;
-    /* height: 30%; */
     width: 88%;
-}
+    padding: 4px 8px 4px 8px;
 
+}
 .detail {
     min-width: 100px;
 }

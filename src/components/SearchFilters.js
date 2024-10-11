@@ -12,14 +12,14 @@ const SearchFilters = ({
   setSelectedCategory,
   productsList,
 }) => {
+  const selectInputRef = useRef();
+
   const categories = [...new Set(products.map((product) => product.category))];
   const categoryOptions = ["Toutes les catégories", ...categories].map(
     (option) => {
       return { value: option, label: option };
     }
   );
-
-  const selectInputRef = useRef();
 
   const handleInputChange = (event) => {
     setSearchInput(event.target.value);
@@ -31,7 +31,6 @@ const SearchFilters = ({
   };
 
   const handleFiltersReset = () => {
-    setSelectedCategory({ ...categoryOptions[0] });
     selectInputRef.current.setValue(categoryOptions[0]);
     setSearchInput("");
   };

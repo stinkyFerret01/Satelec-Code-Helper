@@ -16,7 +16,7 @@ const CodeSearcher = () => {
   };
 
   useEffect(() => {
-    // console.log("CS");
+    // console.log("CodeSearcher");
     if (
       searchInput.length < 3 &&
       selectedCategory === "Toutes les catégories"
@@ -29,7 +29,11 @@ const CodeSearcher = () => {
 
         const matchesSearch =
           normalizeString(product.name).includes(normalizedSearchInput) ||
-          normalizeString(product.description).includes(normalizedSearchInput);
+          normalizeString(product.description).includes(
+            normalizedSearchInput
+          ) ||
+          (product.keyWord &&
+            normalizeString(product.keyWord).includes(normalizedSearchInput));
 
         const matchesCategory =
           selectedCategory === "Toutes les catégories" ||

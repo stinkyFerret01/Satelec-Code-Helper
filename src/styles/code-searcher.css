@@ -1,12 +1,12 @@
 .code-searcher {
     height: calc(100vh - 48px);
     max-height: calc(100vh - 48px);
-
     width: 100vw;
-    overflow: hidden;
-    overflow-y: scroll;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    overflow: hidden;
+    overflow-y: scroll;
 }
