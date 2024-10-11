@@ -1,3 +1,5 @@
+import React, { useRef } from "react";
+
 import Select from "react-select";
 import TextField from "@mui/material/TextField";
 import ResetIcon from "@mui/icons-material/Block";
@@ -17,17 +19,20 @@ const SearchFilters = ({
     }
   );
 
+  const selectInputRef = useRef();
+
   const handleInputChange = (event) => {
     setSearchInput(event.target.value);
   };
 
   const handleSelectionChange = (event) => {
-    setSelectedCategory(event.value);
+    event && setSelectedCategory(event.value);
     setSearchInput("");
   };
 
   const handleFiltersReset = () => {
-    setSelectedCategory("Toutes les catégories");
+    setSelectedCategory({ ...categoryOptions[0] });
+    selectInputRef.current.setValue(categoryOptions[0]);
     setSearchInput("");
   };
 
@@ -42,6 +47,7 @@ const SearchFilters = ({
       />
       <Select
         className="select-filter"
+        ref={selectInputRef}
         options={categoryOptions}
         defaultValue={categoryOptions[0]}
         onChange={handleSelectionChange}
