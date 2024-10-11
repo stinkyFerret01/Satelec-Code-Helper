@@ -1,17 +1,34 @@
 .products-displayer {
     width: 100vw;
     max-width: 100vw;
-    height: calc(100vh - 100px);
+    /* max-height: calc(100vh - 6rem); */
+    max-height: calc(100vh - 86px);
+
     overflow: hidden;
     overflow-y: scroll;
 }
 
 .filter-rules {
     display: flex;
+    margin-top: 1rem;
     justify-content: center;
+    text-align: center;
     width: 100vw;
 }
 
 .product-displayer {
-    /* background-color: green; */
+    margin: 4px 0px 4px 0px;
+}
+
+.product-detail {
+    background-color: white;
+    border: solid black 2px;
+
+    padding: 4px 8px 4px 8px;
+    /* height: 30%; */
+    width: 88%;
+}
+
+.detail {
+    min-width: 100px;
 }

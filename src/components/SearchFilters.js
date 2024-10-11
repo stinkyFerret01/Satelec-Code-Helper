@@ -1,17 +1,28 @@
+import Select from "react-select";
+import TextField from "@mui/material/TextField";
+import ResetIcon from "@mui/icons-material/Block";
+
 import products from "../data/products";
 
 const SearchFilters = ({
   searchInput,
   setSearchInput,
-  selectedCategory,
   setSelectedCategory,
   productsList,
 }) => {
   const categories = [...new Set(products.map((product) => product.category))];
-  const categoryOptions = ["Toutes les catégories", ...categories];
+  const categoryOptions = ["Toutes les catégories", ...categories].map(
+    (option) => {
+      return { value: option, label: option };
+    }
+  );
+
+  const handleInputChange = (event) => {
+    setSearchInput(event.target.value);
+  };
 
   const handleSelectionChange = (event) => {
-    setSelectedCategory(event.target.value);
+    setSelectedCategory(event.value);
     setSearchInput("");
   };
 
@@ -22,32 +33,32 @@ const SearchFilters = ({
 
   return (
     <div className="search-filters">
-      <input
-        type="text"
-        placeholder="recherchez un produit"
+      <TextField
+        className="input-filter"
+        label="Recherche"
+        variant="outlined"
         value={searchInput}
-        onChange={(event) => setSearchInput(event.target.value)}
+        onChange={handleInputChange}
       />
-
-      <select
-        id="select"
-        value={selectedCategory}
+      <Select
+        className="select-filter"
+        options={categoryOptions}
+        defaultValue={categoryOptions[0]}
         onChange={handleSelectionChange}
-      >
-        {categoryOptions.map((category, index) => (
-          <option key={index} value={category}>
-            {category}
-          </option>
-        ))}
-      </select>
+      />
       <button
+        className="reset-filters"
         onClick={handleFiltersReset}
         style={{
-          opacity: productsList.length > 0 ? 1 : 0.2,
           cursor: productsList.length > 0 ? "pointer" : "default",
         }}
       >
-        RESET
+        <ResetIcon
+          style={{
+            fontSize: 30,
+            opacity: productsList.length > 0 ? 1 : 0.2,
+          }}
+        />
       </button>
     </div>
   );

@@ -1,12 +1,23 @@
 import { useState } from "react";
 
+import ProductDetail from "./ProductDetail";
+
 const ProductDisplayer = ({ product }) => {
-  const [productDetail, setProductDetail] = useState(false);
+  const [displayDetail, setDisplayDetail] = useState(false);
 
   return (
-    <div className="product-displayer" onClick={() => setProductDetail(true)}>
+    <div
+      className="product-displayer"
+      onClick={() => setDisplayDetail(!displayDetail)}
+    >
       {product.code} - {product.name} - {product.price} euros
-      {productDetail && <div>yo</div>}
+      {displayDetail && (
+        <ProductDetail
+          displayDetail={displayDetail}
+          setDisplayDetail={setDisplayDetail}
+          product={product}
+        ></ProductDetail>
+      )}
     </div>
   );
 };

@@ -5,6 +5,27 @@
 @import "styles/products-displayer";
 
 .App {
+    font-family: 'Roboto', sans-serif;
+
+    max-height: 100vh;
+    max-height: calc(100vh - 86px);
+
+    max-width: 100vw;
+}
+
+.modal-screen {
+    position: absolute;
+ 
+    background-color: rgba(240, 240, 240, 0.9);
+    pointer-events: auto;
+    position: fixed;
+
+    top: 0;
+    left: 0;
     height: 100vh;
     width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

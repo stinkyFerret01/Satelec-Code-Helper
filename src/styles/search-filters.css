@@ -1,7 +1,7 @@
 .search-filters {
     box-sizing: border-box;
-    padding: 10px 0px 10px 0px;
-    height: 50px;
+    padding: 8px 0px 8px 0px;
+    height: 48px;
     width: 100vw;
 
     display: flex;
@@ -12,5 +12,31 @@
     display: flex;
     justify-content: center;
     width: 100vw;
+}
+
+.input-filter .MuiOutlinedInput-root {
+    max-height: 38px;
+    width: 7rem;
+}
+.input-filter .MuiInputLabel-root {
+    margin-top: -8px;
+}
+.input-filter  .MuiInputLabel-shrink {
+    margin-top: -0px;
+}
+.input-filter  .MuiInputLabel-focused {
+    color: blue;
+}
+
+.select-filter {
+    min-width: 194px;
+    max-height: 32px;
+}
+
+.reset-filters {
+    border: solid #B3B3B3 1px;
+    border-radius: 4px;
+    height: 38px;
+    width: 38px;
 }
 

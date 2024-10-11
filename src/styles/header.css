@@ -1,12 +1,13 @@
 .Header {
-    height: 50px;
+    box-sizing: border-box;
+    /* height: 3rem; */
+    height: 48px;
     width: 100vw;
     padding: 5px;
-    box-sizing: border-box;
     background-color: #0055A0;
 }
 
 .HeaderImage {
     height: auto;
-    width: 130px;
+    width: 8rem;
 }

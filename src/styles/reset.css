@@ -23,3 +23,17 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
+li {
+    margin-top: 4px;
+    list-style-type: none;
+    display: flex;
+}
+
+button {
+	background-color: white;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
