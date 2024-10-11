@@ -56,7 +56,7 @@ const SearchFilters = ({
         <ResetIcon
           style={{
             fontSize: 30,
-            opacity: productsList.length > 0 ? 1 : 0.2,
+            opacity: productsList.length > 0 ? 0.8 : 0.2,
           }}
         />
       </button>
