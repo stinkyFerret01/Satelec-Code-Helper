@@ -1,6 +1,9 @@
-const ProductDetail = ({ product }) => {
+const ProductDetail = ({ product, displayDetail, setDisplayDetail }) => {
   return (
-    <div className="modal-screen">
+    <div
+      className="modal-screen"
+      onClick={() => setDisplayDetail(!displayDetail)}
+    >
       <div className="product-detail">
         <ul>
           <li>

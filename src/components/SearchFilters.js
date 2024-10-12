@@ -9,6 +9,7 @@ import products from "../data/products";
 const SearchFilters = ({
   searchInput,
   setSearchInput,
+  selectedCategory,
   setSelectedCategory,
   productsList,
 }) => {
@@ -23,11 +24,17 @@ const SearchFilters = ({
 
   const handleInputChange = (event) => {
     setSearchInput(event.target.value);
+    if (
+      productsList.length === 0 &&
+      searchInput.length >= 2 &&
+      selectedCategory !== "Toutes les catégories"
+    ) {
+      selectInputRef.current.setValue(categoryOptions[0]);
+    }
   };
 
   const handleSelectionChange = (event) => {
     event && setSelectedCategory(event.value);
-    setSearchInput("");
   };
 
   const handleFiltersReset = () => {
@@ -61,7 +68,11 @@ const SearchFilters = ({
         <ResetIcon
           style={{
             fontSize: 30,
-            opacity: productsList.length > 0 ? 0.8 : 0.2,
+            opacity:
+              searchInput.length > 0 ||
+              selectedCategory !== "Toutes les catégories"
+                ? 0.8
+                : 0.2,
           }}
         />
       </button>

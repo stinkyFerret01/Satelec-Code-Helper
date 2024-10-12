@@ -1,19 +1,22 @@
 import { useEffect } from "react";
 import ProductDisplayer from "./ProductDisplayer";
 
-const ProductsDisplayer = ({ productsList }) => {
+const ProductsDisplayer = ({ productsList, estimate, setEstimate }) => {
   useEffect(() => {
     // console.log("ProductsDisplayer");
   }, [productsList]);
 
   return (
     <div className="products-displayer">
-      <div>
-        {productsList.length > 0 &&
-          productsList.map((product, index) => (
-            <ProductDisplayer key={index} product={product}></ProductDisplayer>
-          ))}
-      </div>
+      {productsList.length > 0 &&
+        productsList.map((product, index) => (
+          <ProductDisplayer
+            key={index}
+            product={product}
+            estimate={estimate}
+            setEstimate={setEstimate}
+          ></ProductDisplayer>
+        ))}
       <div className="filter-rules">
         {productsList.length === 0 && (
           <p>

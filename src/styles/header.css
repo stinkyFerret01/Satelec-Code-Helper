@@ -5,9 +5,34 @@
     height: 48px;
     width: 100vw;
     padding: 5px;
+
+    display: flex;
+    justify-content: space-between;
 }
 
 .HeaderImage {
     height: auto;
     width: 8rem;
+}
+
+.estimate-button {
+    background-color: transparent;
+    border: none;
+
+    color: white;
+
+    height: 38px;
+    width: 38px;
+}
+.estimate-button:hover {
+    cursor: pointer;
+}
+
+.estimate {
+    background-color: white;
+    border: solid black 2px;
+    border-radius: 8px;
+
+    width: 88%;
+    padding: 4px 8px 4px 8px;
 }

@@ -4,7 +4,7 @@ import products from "../data/products";
 import SearchFilters from "./SearchFilters";
 import ProductsDisplayer from "./ProductsDisplayer";
 
-const CodeSearcher = () => {
+const CodeSearcher = ({ estimate, setEstimate }) => {
   const [searchInput, setSearchInput] = useState("");
   const [productsList, setProductsList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(
@@ -55,7 +55,11 @@ const CodeSearcher = () => {
         setSelectedCategory={setSelectedCategory}
         productsList={productsList}
       ></SearchFilters>
-      <ProductsDisplayer productsList={productsList}></ProductsDisplayer>
+      <ProductsDisplayer
+        productsList={productsList}
+        estimate={estimate}
+        setEstimate={setEstimate}
+      ></ProductsDisplayer>
     </div>
   );
 };
