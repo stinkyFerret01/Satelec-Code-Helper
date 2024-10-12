@@ -12,6 +12,7 @@ const ProductDisplayer = ({
   displayEstimate,
 }) => {
   const [displayDetail, setDisplayDetail] = useState(false);
+  const [holdInterval, setHoldInterval] = useState(null);
 
   const calculateTotal = (price, quantity) => {
     const total = price * quantity;
@@ -45,9 +46,24 @@ const ProductDisplayer = ({
     });
   };
 
-  const addToEstimate = () => {
-    console.log("click");
+  const startDecrement = () => {
+    removeFromEstimate();
+    const timeoutId = setTimeout(() => {
+      const intervalId = setInterval(() => {
+        removeFromEstimate();
+      }, 100);
+      setHoldInterval(intervalId);
+    }, 500);
+    setHoldInterval(timeoutId);
+  };
 
+  const stopDecrement = () => {
+    clearTimeout(holdInterval);
+    clearInterval(holdInterval);
+    setHoldInterval(null);
+  };
+
+  const addToEstimate = () => {
     setEstimate((prevEstimate) => {
       const productIndex = prevEstimate.findIndex(
         (item) => item.code === product.code
@@ -67,6 +83,23 @@ const ProductDisplayer = ({
         return newEstimate;
       }
     });
+  };
+
+  const startIncrement = () => {
+    addToEstimate();
+    const timeoutId = setTimeout(() => {
+      const intervalId = setInterval(() => {
+        addToEstimate();
+      }, 100);
+      setHoldInterval(intervalId);
+    }, 500);
+    setHoldInterval(timeoutId);
+  };
+
+  const stopIncrement = () => {
+    clearTimeout(holdInterval);
+    clearInterval(holdInterval);
+    setHoldInterval(null);
   };
 
   const isProductInEstimate = (product, estimate) => {
@@ -99,7 +132,13 @@ const ProductDisplayer = ({
           isProductInEstimate(product, estimate).quantity > 0 && (
             <button
               className="remove-from-estimate-button"
-              onClick={removeFromEstimate}
+              onMouseDown={startDecrement}
+              onMouseUp={stopDecrement}
+              onMouseLeave={stopDecrement}
+              onTouchStart={startDecrement}
+              onTouchEnd={stopDecrement}
+              onTouchCancel={stopDecrement}
+              // onClick={removeFromEstimate}
             >
               <RemoveIcon
                 style={{
@@ -112,7 +151,16 @@ const ProductDisplayer = ({
           isProductInEstimate(product, estimate).quantity > 0 && (
             <div>{isProductInEstimate(product, estimate).quantity}</div>
           )}
-        <button className="add-to-estimate-button" onClick={addToEstimate}>
+        <button
+          className="add-to-estimate-button"
+          onMouseDown={startIncrement}
+          onMouseUp={stopIncrement}
+          onMouseLeave={stopIncrement}
+          onTouchStart={startIncrement}
+          onTouchEnd={stopIncrement}
+          onTouchCancel={stopIncrement}
+          // onClick={addToEstimate}
+        >
           <AddIcon
             style={{
               fontSize: 30,

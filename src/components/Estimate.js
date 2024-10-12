@@ -9,21 +9,12 @@ const Estimate = ({
 }) => {
   const calculateTotal = (estimate) => {
     const total = estimate.reduce((total, product) => {
-      console.log(product.price);
-      console.log(product.quantity);
-      console.log(product.price * product.quantity);
-
       return total + product.price * product.quantity;
     }, 0);
 
     return parseFloat(total.toFixed(2));
   };
 
-  //   useEffect(() => {
-  //     if (estimate.length === 1) {
-  //       setDisplayEstimate(!displayEstimate);
-  //     }
-  //   }, [estimate, displayEstimate, setDisplayEstimate]);
   useEffect(() => {
     if (estimate.length === 1) {
       setEstimate((prevEstimate) => {
