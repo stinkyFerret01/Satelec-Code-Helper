@@ -31,7 +31,7 @@ const ProductDisplayer = ({
 
       if (
         updatedEstimate[productIndex] &&
-        updatedEstimate[productIndex].quantity !== 0
+        updatedEstimate[productIndex].quantity > 0
       ) {
         updatedEstimate[productIndex].quantity -= 1;
       }
@@ -51,7 +51,12 @@ const ProductDisplayer = ({
     removeFromEstimate();
     const timeoutId = setTimeout(() => {
       const intervalId = setInterval(() => {
-        removeFromEstimate();
+        if (product.quantity > 0) {
+          // Vérifie avant de décrémenter
+          removeFromEstimate(); // Décrémente toutes les 100ms si quantité > 0
+        } else {
+          clearInterval(intervalId); // Stoppe l'interval si la quantité atteint 0
+        }
       }, 100);
       setHoldInterval(intervalId);
     }, 500);
