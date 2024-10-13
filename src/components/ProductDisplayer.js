@@ -51,7 +51,10 @@ const ProductDisplayer = ({
     removeFromEstimate();
     const timeoutId = setTimeout(() => {
       const intervalId = setInterval(() => {
-        if (product.quantity > 0) {
+        const productIndex = estimate.findIndex(
+          (item) => item.code === product.code
+        );
+        if (estimate[productIndex].quantity > 0) {
           // Vérifie avant de décrémenter
           removeFromEstimate(); // Décrémente toutes les 100ms si quantité > 0
         } else {
