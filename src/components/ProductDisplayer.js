@@ -13,12 +13,16 @@ const ProductDisplayer = ({
 }) => {
   const [displayDetail, setDisplayDetail] = useState(false);
   const [holdInterval, setHoldInterval] = useState(null);
-  const [isHolding, setIsHolding] = useState(false);
+  // const [isHolding, setIsHolding] = useState(false);
 
   const calculateTotal = (price, quantity) => {
     const total = price * quantity;
 
     return total.toFixed(2);
+  };
+
+  const isMobile = () => {
+    return window.matchMedia("(pointer: coarse)").matches;
   };
 
   const removeFromEstimate = () => {
@@ -55,10 +59,9 @@ const ProductDisplayer = ({
           (item) => item.code === product.code
         );
         if (estimate[productIndex].quantity > 0) {
-          // Vérifie avant de décrémenter
-          removeFromEstimate(); // Décrémente toutes les 100ms si quantité > 0
+          removeFromEstimate();
         } else {
-          clearInterval(intervalId); // Stoppe l'interval si la quantité atteint 0
+          clearInterval(intervalId);
         }
       }, 100);
       setHoldInterval(intervalId);
@@ -95,51 +98,51 @@ const ProductDisplayer = ({
   };
 
   // Fonction pour démarrer l'incrémentation rapide
-  const startIncrement = (event) => {
-    event.preventDefault(); // Empêcher le comportement par défaut
-    setIsHolding(false); // Réinitialise le drapeau à chaque clic
-    addToEstimate(); // Incrémente immédiatement
+  // const startIncrement = (event) => {
+  //   event.preventDefault(); // Empêcher le comportement par défaut
+  //   setIsHolding(false); // Réinitialise le drapeau à chaque clic
+  //   addToEstimate(); // Incrémente immédiatement
 
-    // Démarrer un délai avant d'autoriser l'incrémentation rapide
-    const timeoutId = setTimeout(() => {
-      setIsHolding(true); // Activer le mode maintien
-      const intervalId = setInterval(() => {
-        addToEstimate(); // Incrémente toutes les 100ms pendant le maintien
-      }, 100);
-      setHoldInterval(intervalId); // Stocker l'intervalle pour l'arrêter plus tard
-    }, 500); // Délai de 500ms avant de commencer l'incrémentation rapide
-    setHoldInterval(timeoutId); // Stocker le timeout pour l'arrêter si nécessaire
-  };
+  //   // Démarrer un délai avant d'autoriser l'incrémentation rapide
+  //   const timeoutId = setTimeout(() => {
+  //     setIsHolding(true); // Activer le mode maintien
+  //     const intervalId = setInterval(() => {
+  //       addToEstimate(); // Incrémente toutes les 100ms pendant le maintien
+  //     }, 100);
+  //     setHoldInterval(intervalId); // Stocker l'intervalle pour l'arrêter plus tard
+  //   }, 500); // Délai de 500ms avant de commencer l'incrémentation rapide
+  //   setHoldInterval(timeoutId); // Stocker le timeout pour l'arrêter si nécessaire
+  // };
 
   // Fonction pour arrêter l'incrémentation rapide
+  // const stopIncrement = () => {
+  //   if (!isHolding) {
+  //     // Si l'utilisateur n'a pas maintenu, c'était un clic rapide
+  //     clearTimeout(holdInterval); // Annuler l'intervalle si c'était un clic rapide
+  //   } else {
+  //     // Si l'utilisateur a maintenu, il faut arrêter l'incrémentation rapide
+  //     clearInterval(holdInterval); // Arrêter l'intervalle d'incrémentation rapide
+  //   }
+  //   setIsHolding(false); // Réinitialiser le drapeau
+  //   setHoldInterval(null); // Réinitialiser l'intervalle
+  // };
+
   const stopIncrement = () => {
-    if (!isHolding) {
-      // Si l'utilisateur n'a pas maintenu, c'était un clic rapide
-      clearTimeout(holdInterval); // Annuler l'intervalle si c'était un clic rapide
-    } else {
-      // Si l'utilisateur a maintenu, il faut arrêter l'incrémentation rapide
-      clearInterval(holdInterval); // Arrêter l'intervalle d'incrémentation rapide
-    }
-    setIsHolding(false); // Réinitialiser le drapeau
-    setHoldInterval(null); // Réinitialiser l'intervalle
+    clearTimeout(holdInterval);
+    clearInterval(holdInterval);
+    setHoldInterval(null);
   };
 
-  // const stopIncrement = () => {
-  //   clearTimeout(holdInterval);
-  //   clearInterval(holdInterval);
-  //   setHoldInterval(null);
-  // };
-
-  // const startIncrement = () => {
-  //   addToEstimate();
-  //   const timeoutId = setTimeout(() => {
-  //     const intervalId = setInterval(() => {
-  //       addToEstimate();
-  //     }, 100);
-  //     setHoldInterval(intervalId);
-  //   }, 500);
-  //   setHoldInterval(timeoutId);
-  // };
+  const startIncrement = () => {
+    addToEstimate();
+    const timeoutId = setTimeout(() => {
+      const intervalId = setInterval(() => {
+        addToEstimate();
+      }, 100);
+      setHoldInterval(intervalId);
+    }, 500);
+    setHoldInterval(timeoutId);
+  };
 
   const isProductInEstimate = (product, estimate) => {
     return estimate.find((item) => item.code === product.code);
@@ -171,7 +174,8 @@ const ProductDisplayer = ({
           isProductInEstimate(product, estimate).quantity > 0 && (
             <button
               className="remove-from-estimate-button"
-              onMouseDown={startDecrement}
+              // onMouseDown={startDecrement}
+              onMouseDown={!isMobile() ? startDecrement : undefined}
               onMouseUp={stopDecrement}
               onMouseLeave={stopDecrement}
               onTouchStart={startDecrement}
@@ -192,7 +196,8 @@ const ProductDisplayer = ({
           )}
         <button
           className="add-to-estimate-button"
-          onMouseDown={startIncrement}
+          // onMouseDown={startIncrement}
+          onMouseDown={!isMobile() ? startIncrement : undefined}
           onMouseUp={stopIncrement}
           onMouseLeave={stopIncrement}
           onTouchStart={startIncrement}
