@@ -829,6 +829,36 @@ const products = [
     category: "Goulottes/Moulures",
     price: "34.77",
   },
+  {
+    id: 84,
+    code: "1000!",
+    name: "interrupteur Plexo 10A",
+    reference: "69511 + 69651",
+    brand: "Legrand",
+    description: "interrupteur Plexo 10A",
+    category: "Commande",
+    price: "53.69",
+  },
+  {
+    id: 85,
+    code: "1000! (1300?)",
+    name: "interrupteur 10A",
+    reference: "77011L + 67686L",
+    brand: "Legrand",
+    description: "interrupteur 10A",
+    category: "Commande",
+    price: "30.96",
+  },
+  {
+    id: 86,
+    code: "1000! (1301?)",
+    name: "interrupteur lumineux 10A",
+    reference: "77011L + 67686L",
+    brand: "Legrand",
+    description: "interrupteur 10A",
+    category: "Commande",
+    price: "36.78",
+  },
 ];
 
 export default products;
