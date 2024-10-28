@@ -13,7 +13,6 @@ const ProductDisplayer = ({
 }) => {
   const [displayDetail, setDisplayDetail] = useState(false);
   const [holdInterval, setHoldInterval] = useState(null);
-  // const [isHolding, setIsHolding] = useState(false);
 
   const calculateTotal = (price, quantity) => {
     const total = price * quantity;
@@ -96,36 +95,6 @@ const ProductDisplayer = ({
       }
     });
   };
-
-  // Fonction pour démarrer l'incrémentation rapide
-  // const startIncrement = (event) => {
-  //   event.preventDefault(); // Empêcher le comportement par défaut
-  //   setIsHolding(false); // Réinitialise le drapeau à chaque clic
-  //   addToEstimate(); // Incrémente immédiatement
-
-  //   // Démarrer un délai avant d'autoriser l'incrémentation rapide
-  //   const timeoutId = setTimeout(() => {
-  //     setIsHolding(true); // Activer le mode maintien
-  //     const intervalId = setInterval(() => {
-  //       addToEstimate(); // Incrémente toutes les 100ms pendant le maintien
-  //     }, 100);
-  //     setHoldInterval(intervalId); // Stocker l'intervalle pour l'arrêter plus tard
-  //   }, 500); // Délai de 500ms avant de commencer l'incrémentation rapide
-  //   setHoldInterval(timeoutId); // Stocker le timeout pour l'arrêter si nécessaire
-  // };
-
-  // Fonction pour arrêter l'incrémentation rapide
-  // const stopIncrement = () => {
-  //   if (!isHolding) {
-  //     // Si l'utilisateur n'a pas maintenu, c'était un clic rapide
-  //     clearTimeout(holdInterval); // Annuler l'intervalle si c'était un clic rapide
-  //   } else {
-  //     // Si l'utilisateur a maintenu, il faut arrêter l'incrémentation rapide
-  //     clearInterval(holdInterval); // Arrêter l'intervalle d'incrémentation rapide
-  //   }
-  //   setIsHolding(false); // Réinitialiser le drapeau
-  //   setHoldInterval(null); // Réinitialiser l'intervalle
-  // };
 
   const stopIncrement = () => {
     clearTimeout(holdInterval);
